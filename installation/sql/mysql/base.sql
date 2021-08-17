@@ -1175,6 +1175,6 @@ INSERT INTO `#__workflow_transitions` (`id`, `asset_id`, `published`, `ordering`
 (2, 59, 1, 2, 1, 'Publié', '', -1, 1, '{"publishing":"1"}'),
 (3, 60, 1, 3, 1, 'A la corbeille', '', -1, 1, '{"publishing":"-2"}'),
 (4, 61, 1, 4, 1, 'Archivé', '', -1, 1, '{"publishing":"2"}'),
-(5, 62, 1, 5, 1, 'En vedette', '', -1, 1, '{"featuring":"1"}'),
-(6, 63, 1, 6, 1, 'Non en vedette', '', -1, 1, '{"featuring":"0"}'),
-(7, 64, 1, 7, 1, 'Publié & En vedette', '', -1, 1, '{"publishing":"1","featuring":"1"}');
+(5, 62, 1, 5, 1, 'Épinglé', '', -1, 1, '{"featuring":"1"}'),
+(6, 63, 1, 6, 1, 'Désépinglé', '', -1, 1, '{"featuring":"0"}'),
+(7, 64, 1, 7, 1, 'Publié & Épinglé', '', -1, 1, '{"publishing":"1","featuring":"1"}');
