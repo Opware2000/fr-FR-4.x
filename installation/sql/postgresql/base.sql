@@ -82,11 +82,11 @@ INSERT INTO "#__assets" ("id", "parent_id", "lft", "rgt", "level", "name", "titl
 (54, 16, 52, 53, 2, 'com_menus.menu.1', 'Main Menu', '{}'),
 (55, 18, 94, 95, 2, 'com_modules.module.87', 'Sample Data', '{}'),
 (56, 8, 20, 37, 2, 'com_content.workflow.1', 'COM_WORKFLOW_BASIC_WORKFLOW', '{}'),
-(57, 56, 21, 22, 3, 'com_content.state.1', 'COM_WORKFLOW_BASIC_STAGE', '{}'),
-(58, 56, 23, 24, 3, 'com_content.transition.1', 'Publish', '{}'),
-(59, 56, 25, 26, 3, 'com_content.transition.2', 'Unpublish', '{}'),
-(60, 56, 27, 28, 3, 'com_content.transition.3', 'Archive', '{}'),
-(61, 56, 29, 30, 3, 'com_content.transition.4', 'Trash', '{}'),
+(57, 56, 21, 22, 3, 'com_content.stage.1', 'COM_WORKFLOW_BASIC_STAGE', '{}'),
+(58, 56, 23, 24, 3, 'com_content.transition.1', 'Unpublish', '{}'),
+(59, 56, 25, 26, 3, 'com_content.transition.2', 'Publish', '{}'),
+(60, 56, 27, 28, 3, 'com_content.transition.3', 'Trash', '{}'),
+(61, 56, 29, 30, 3, 'com_content.transition.4', 'Archive', '{}'),
 (62, 56, 31, 32, 3, 'com_content.transition.5', 'Feature', '{}'),
 (63, 56, 33, 34, 3, 'com_content.transition.6', 'Unfeature', '{}'),
 (64, 56, 35, 36, 3, 'com_content.transition.7', 'Publish & Feature', '{}'),
@@ -434,7 +434,7 @@ CREATE INDEX "#__languages_idx_access" ON "#__languages" ("access");
 
 INSERT INTO "#__languages" ("lang_id", "lang_code", "title", "title_native", "sef", "image", "description", "metakey", "metadesc", "sitename", "published", "access", "ordering") VALUES
 (1, 'en-GB', 'English (en-GB)', 'English (United Kingdom)', 'en', 'en_gb', '', '', '', '', 1, 1, 2),
-(2, 'fr-FR', 'French (fr-FR)', 'Français (France)', 'fr', 'fr_fr', '', '', '', '', 1, 1, 1);
+(2, 'fr-FR', 'French (fr-FR)', 'FranÃ§ais (France)', 'fr', 'fr_fr', '', '', '', '', 1, 1, 1);
 
 SELECT setval('#__languages_lang_id_seq', 2, false);
 
@@ -934,14 +934,14 @@ COMMENT ON COLUMN "#__usergroups"."rgt" IS 'Nested set rgt.';
 
 INSERT INTO "#__usergroups" ("id", "parent_id", "lft", "rgt", "title") VALUES
 (1, 0, 1, 18, 'Public'),
-(2, 1, 8, 15, 'Enregistré'),
+(2, 1, 8, 15, 'EnregistrÃ©'),
 (3, 2, 9, 14, 'Auteur'),
-(4, 3, 10, 13, 'Rédacteur'),
+(4, 3, 10, 13, 'RÃ©dacteur'),
 (5, 4, 11, 12, 'Validateur'),
 (6, 1, 4, 7, 'Gestionnaire'),
 (7, 6, 5, 6, 'Administrateur'),
 (8, 1, 16, 17, 'Super Utilisateur'),
-(9, 1, 2, 3, 'Invité');
+(9, 1, 2, 3, 'InvitÃ©');
 
 SELECT setval('#__usergroups_id_seq', 10, false);
 
@@ -1068,9 +1068,9 @@ COMMENT ON COLUMN "#__viewlevels"."rules" IS 'JSON encoded access control.';
 
 INSERT INTO "#__viewlevels" ("id", "title", "ordering", "rules") VALUES
 (1, 'Public', 0, '[1]'),
-(2, 'Enregistré', 2, '[6,2,8]'),
-(3, 'Spécial', 3, '[6,3,8]'),
-(5, 'Invité', 1, '[9]'),
+(2, 'EnregistrÃ©', 2, '[6,2,8]'),
+(3, 'SpÃ©cial', 3, '[6,3,8]'),
+(5, 'InvitÃ©', 1, '[9]'),
 (6, 'Super Utilisateur', 4, '[8]');
 
 SELECT setval('#__viewlevels_id_seq', 7, false);
@@ -1189,12 +1189,12 @@ CREATE INDEX "#__workflow_transitions_idx_workflow_id" ON "#__workflow_transitio
 CREATE INDEX "#__workflow_transitions_idx_checked_out" ON "#__workflow_transitions" ("checked_out");
 
 INSERT INTO "#__workflow_transitions" ("id", "asset_id", "published", "ordering", "workflow_id", "title", "description", "from_stage_id", "to_stage_id", "options") VALUES
-(1, 58, 1, 1, 1, 'Dépublié', '', -1, 1, '{"publishing":"0"}'),
-(2, 59, 1, 2, 1, 'Publié', '', -1, 1, '{"publishing":"1"}'),
+(1, 58, 1, 1, 1, 'DÃ©publiÃ©', '', -1, 1, '{"publishing":"0"}'),
+(2, 59, 1, 2, 1, 'PubliÃ©', '', -1, 1, '{"publishing":"1"}'),
 (3, 60, 1, 3, 1, 'A la corbeille', '', -1, 1, '{"publishing":"-2"}'),
-(4, 61, 1, 4, 1, 'Archivé', '', -1, 1, '{"publishing":"2"}'),
-(5, 62, 1, 5, 1, 'Épinglé', '', -1, 1, '{"featuring":"1"}'),
-(6, 63, 1, 6, 1, 'Désépinglé', '', -1, 1, '{"featuring":"0"}'),
-(7, 64, 1, 7, 1, 'Publié & Épinglé', '', -1, 1, '{"publishing":"1","featuring":"1"}');
+(4, 61, 1, 4, 1, 'ArchivÃ©', '', -1, 1, '{"publishing":"2"}'),
+(5, 62, 1, 5, 1, 'Ã©pinglÃ©', '', -1, 1, '{"featuring":"1"}'),
+(6, 63, 1, 6, 1, 'DÃ©sÃ©pinglÃ©', '', -1, 1, '{"featuring":"0"}'),
+(7, 64, 1, 7, 1, 'PubliÃ© & Ã©pinglÃ©', '', -1, 1, '{"publishing":"1","featuring":"1"}');
 
 SELECT setval('#__workflow_transitions_id_seq', 8, false);
